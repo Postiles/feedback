@@ -1,4 +1,9 @@
-HOW TO INSTALL
+HOW TO INSTALL (Easy mode)
+=============
+
+Download the crx file and drag it into Chrome
+
+HOW TO INSTALL (Developers mode)
 =============
 
 Step 1
