@@ -22,7 +22,7 @@ function install_notice() {
         
     var now = new Date().getTime();
     localStorage.setItem('install_time', now);
-    alert("You've installed Postile's feedback extension. When visiting postiles, you'll see a icon on the right of your address bar. Click that to send a report. Thanks.");
+    alert("You've installed Postile's feedback extension. When visiting postiles, you'll see a icon on the right of your address bar. Click that to send a report. Thanks. You may need to refresh the postiles tab or restart the browser for the first use.");
 }
 
 install_notice();
