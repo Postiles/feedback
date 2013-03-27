@@ -1,0 +1,21 @@
+{
+  // Required
+  "name": "Postiles feedback",
+  "version": "0.1",
+  "manifest_version": 2,
+  
+  "background": { "scripts": ["main.js"] },
+
+  // Recommended
+  "description": "Seed feedback information and bug report to Postiles.com",
+  "icons": { "48": "guanlun.png" },
+ 
+  "page_action": {
+    "default_icon": {
+      "19": "ia.png"
+    },
+    "default_title": "Postile feedback"
+  },
+ 
+  "permissions": ["tabs", "*://*.postiles.com/*", "*://127.0.0.1:*/*", "*://127.0.0.1/*"]
+}
