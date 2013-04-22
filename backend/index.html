@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<title>Feedback</title>
+<script language="javascript">
+window.addEventListener("message", receiveMessage, false);
+
+window.onunload = function() { window.opener.postMessage("DONE", "*"); }
+
+window.opener.postMessage("REQUEST_ERROR_INFO", "*");
+ 
+var d;
+ 
+function receiveMessage(event) {
+    d = event.data;
+    var show = document.getElementById('show');
+    var hide = document.getElementById('hide');
+    if (d.userAgent && d.location && d.errorList && d.clientTs) {
+        hide.style.display = 'block';
+        if (d.image) {
+            show.style.display = 'none';
+        } else {
+            show.innerHTML = 'Install our <a href="chrome" target="_blank">Chrome extension</a> to report with screenshot.';
+        }
+    } else {
+        show.innerHTML = 'Source data damaged.';
+    }
+}
+
+function submit() {
+    var formData = new FormData();
+    var iEl = document.getElementById('ta').value;
+    if (!iEl.length) { alert('Please describe something.'); return; }
+    var iMail = document.getElementById('mail').value;
+    var formData = new FormData();
+    formData.append('description', iEl);
+    formData.append('mail', iMail);
+    formData.append('user_agent', d.userAgent);
+    formData.append('location', d.location);
+    formData.append('client_timestamp', d.clientTs);
+    formData.append('error_list', d.errorList);
+    if (d.image) { formData.append('image', d.image);  }
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'collect.php');
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            hide.innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send(formData);
+}
+</script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css' />
+<style type="text/css">
+/* feedback */
+html, body {
+    padding: 0;
+    margin: 0;
+    background: #024d61;
+}
+body, input, button, textarea {
+    font-family: 'Roboto', sans-serif;
+}
+.feedback {
+    color: #F5F5F5;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 12px;
+}
+.feedback h3 {
+    font-size: 18px;
+    margin: 0;
+    padding: 8px 0 16px 0;
+}
+.feedback textarea {
+    display: block;
+    border: 0 none;
+    background: #F5F5F5;
+    resize: none;
+    margin: 14px 0 10px 0;
+    width: 100%;
+    height: 60px;
+    outline: none;
+    font-size: 12px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+.feedback input {
+    display: block;
+    border: 0 none;
+    background: #F5F5F5;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 12px;
+    height: 22px;
+    box-sizing: border-box;
+    padding: 5px 6px;
+    width: 100%;
+    outline: none;
+}
+a, a:visited {
+    color: #FFF;
+}
+.feedback button {
+    float: right;
+    display: block;
+    height: 28px;
+    background: #F5F5F5;
+    font-size: 14px;
+    border: 0 none;
+}
+.clear {
+    clear: both;
+}
+#hide {
+    display: none;
+}
+#show {
+    margin-top: 10px;
+    text-align: center;
+}
+</style>
+<div class="feedback">
+    <div id="hide">
+        <h3>Feedback</h3>
+        Report bugs, or propose new feature. Your feedback will be anonymous.
+        <textarea id="ta"></textarea>
+        <input placeholder="(optional) your email, if you accept our further consultation or response" id="mail" />
+        <button onclick="submit()">Send</button>
+        <div class="clear"></div>
+    </div>
+    <div id="show">Waiting for initializing... Re-open this pop-up if nothing's going on.</div>
+</div>
+</html>

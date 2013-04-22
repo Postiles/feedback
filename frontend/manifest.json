@@ -1,14 +1,14 @@
 {
   // Required
   "name": "Postiles feedback",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 2,
   
   "background": { "scripts": ["main.js"] },
 
   // Recommended
   "description": "Seed feedback information and bug report to Postiles.com",
-  "icons": { "48": "guanlun.png" },
+  "icons": { "48": "postile.png" },
  
   "page_action": {
     "default_icon": {
