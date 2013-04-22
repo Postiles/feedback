@@ -1,0 +1,1 @@
+document.body.setAttribute("postiles-chrome-plugin-injected", true);

@@ -17,5 +17,12 @@
     "default_title": "Postile feedback"
   },
  
-  "permissions": ["tabs", "*://*.postiles.com/*", "*://127.0.0.1:*/*", "*://127.0.0.1/*"]
+  "permissions": ["tabs", "*://*.postiles.com/*", "*://127.0.0.1:*/*"],
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*.postiles.com/*", "*://127.0.0.1:*/*"],
+      "js": ["inject.js"]
+    }
+  ]
 }
