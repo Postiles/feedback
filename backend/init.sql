@@ -7,5 +7,6 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `ip` tinytext NOT NULL,
   `description` text NOT NULL,
   `mail` tinytext NOT NULL,
-  `image` longtext NOT NULL
+  `image` longtext NOT NULL,
+  `resolved` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

@@ -26,8 +26,8 @@ if (isset($_POST['image'])) {
     $escaped['image'] = '';
 }
 
-mysql_query('INSERT INTO `feedback` VALUES (NOW(), '.$escaped['client_timestamp'].', \''.$escaped['error_list'].'\', \''.$escaped['user_agent'].'\', \''.$escaped['location'].'\', \''.mysql_real_escape_string($_SERVER['REMOTE_ADDR']).'\', \''.$escaped['description'].'\', \''.$escaped['mail'].'\' , \''.$escaped['image'].'\')');
+mysql_query('INSERT INTO `feedback` VALUES (NOW(), '.$escaped['client_timestamp'].', \''.$escaped['error_list'].'\', \''.$escaped['user_agent'].'\', \''.$escaped['location'].'\', \''.mysql_real_escape_string($_SERVER['REMOTE_ADDR']).'\', \''.$escaped['description'].'\', \''.$escaped['mail'].'\' , \''.$escaped['image'].'\', 0)');
 
-echo 'Done. You can close the window now.';
+echo 'Thank you for your feedback. We will be working hard to bring you a better experience. You may close the window now.';
 
 ?>
