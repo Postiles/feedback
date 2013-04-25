@@ -10,9 +10,13 @@ function parseJson($i) {
     if (!count($l)) { return ''; }
     $r = array();
     foreach($l as $sg) {
-        $r[]= '<b>'.$sg['filename'].':'.$sg['lineno'].'</b> - '.$sg['message'];
+        if (isset($sg['stacktrace'])) {
+            $r[]= nl2br($sg['stacktrace']);
+        } else {
+            $r[]= '<b>'.$sg['filename'].':'.$sg['lineno'].'</b> - '.$sg['message'];
+        }
     }
-    return implode('<br />', $r);
+    return implode('<hr />', $r);
 }
 
 $result = mysql_query('SELECT * FROM feedback WHERE `resolved` = 0 ORDER BY `server_timestamp` DESC');
