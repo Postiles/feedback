@@ -119,6 +119,30 @@ a, a:visited {
     margin-top: 10px;
     text-align: center;
 }
+#drink {
+    width: 15px;
+    position: absolute;
+    height: 28px;
+    right: 8px;
+    top: 4px;
+    background: url(drink.png);
+}
+#drink div {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #F5F5F5;
+    color: #024d61;
+    padding: 6px;
+    font-size: 12px;
+    line-height: 17px;
+    width: 150px;
+    border: 4px solid #999;
+}
+#drink:hover div {
+    display: block;
+}
 </style>
 <div class="feedback">
     <div id="hide">
@@ -130,5 +154,8 @@ a, a:visited {
         <div class="clear"></div>
     </div>
     <div id="show">Waiting for initializing... Re-open this pop-up if nothing's going on.</div>
+    <div id="drink">
+        <div><b>Thank you for your support!</b> Leave a feedback with your email, and pick up a cup of free drink at <i>CS Lab 3 of HKUST</i> on Saturday night!</div>
+    </div>
 </div>
 </html>
